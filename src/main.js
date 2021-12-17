@@ -3,10 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import TreeTable from 'vue-table-with-tree-grid'
 import './assets/css/global.css'
 import './plugins/element.js'
 import './assets/fonts/iconfont.css'
-Vue.config.productionTip = false;
+import { Tree } from 'element-ui'
+
+
 
 
 axios.defaults.baseURL='http://127.0.0.1:8888/api/private/v1/'
@@ -17,6 +20,10 @@ axios.interceptors.request.use(config=>{
 });
 
 Vue.prototype.$http=axios
+
+Vue.config.productionTip = false;
+
+Vue.component('tree-table',TreeTable);
 new Vue({
   router,
   store,
