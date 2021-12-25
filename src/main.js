@@ -28,7 +28,7 @@ Vue.config.productionTip = false;
 Vue.use(VueQuillEditor)
 Vue.component('tree-table',TreeTable);
 Vue.filter('dataFormat',function(originVal){
-const dt=  new Date(originVal);
+  const dt = new Date(originVal * 1000);//这里的问题是 要给时间戳乘以1000  如果不是10位时间戳的话（不包含毫秒） 要把10位时间戳*1000
 
 const y=dt.getFullYear();
 const m=(dt.getMonth()+1+'').padStart(2,'0');
