@@ -1,12 +1,7 @@
 <template>
   <div>
     <!-- 面包屑导航区域 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-      <el-breadcrumb-item>添加商品</el-breadcrumb-item>
-    </el-breadcrumb>
-
+    <Breadcrumb name1="商品管理" name2="添加商品" />
     <!-- 卡片视图 -->
     <el-card>
       <!-- 提示区域 -->
@@ -135,8 +130,15 @@
 
 <script>
 import _ from "lodash";
-
+import { goodsAddFormRulesMixin } from '@/common/mixin.js'
+import Breadcrumb from '../breadcrumb/Breadcrumb'
 export default {
+  name: 'Add',
+
+  components: {
+    Breadcrumb
+  },
+  mixins: [goodsAddFormRulesMixin],
   data() {
     return {
       activeIndex: "0",
@@ -153,23 +155,6 @@ export default {
         // 商品的详情描述
         goods_introduce: "",
         attrs: [],
-      },
-      addFormRules: {
-        goods_name: [
-          { required: true, message: "请输入商品名称", trigger: "blur" },
-        ],
-        goods_price: [
-          { required: true, message: "请输入商品价格", trigger: "blur" },
-        ],
-        goods_weight: [
-          { required: true, message: "请输入商品重量", trigger: "blur" },
-        ],
-        goods_number: [
-          { required: true, message: "请输入商品数量", trigger: "blur" },
-        ],
-        goods_cat: [
-          { required: true, message: "请选择商品分类", trigger: "blur" },
-        ],
       },
       // 商品分类列表
       catelist: [],

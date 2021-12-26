@@ -1,11 +1,7 @@
 <template>
   <div >
     <!-- 面包屑导航 -->
-  <el-breadcrumb  separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>权限管理</el-breadcrumb-item>
-      <el-breadcrumb-item>角色列表</el-breadcrumb-item>
-    </el-breadcrumb>
+   <Breadcrumb name1="权限管理" name2="角色列表" />
     <!-- 卡片视图区域 -->
     <el-card>
       <el-row>
@@ -107,8 +103,14 @@
 </template>
 
 <script>
-
+import { rolesFormRulesMixin } from '@/common/mixin.js'
+import Breadcrumb from '../breadcrumb/Breadcrumb'
 export default {
+  name: 'Roles',
+  components: {
+    Breadcrumb
+  },
+  mixins: [rolesFormRulesMixin],
   data() {
     return {
       // 所有角色的列表
@@ -125,27 +127,27 @@ export default {
         roleName: '',
         roleDesc: ''
       },
-      //校验规则
-      editFormRules: {
-        roleName: [
-          { required: true, message: '请输入角色名字', trigger: 'blur' },
-          {
-            min: 3,
-            max: 10,
-            message: '输入的范围是 3 ~ 10 为字符',
-            triggetr: 'nlur'
-          }
-        ],
-        roleDesc: [
-          { required: true, message: '请输入角色描述', trigger: 'blur' },
-          {
-            min: 5,
-            max: 20,
-            message: '输入的范围是 5 ~ 20 为字符',
-            triggetr: 'nlur'
-          }
-        ]
-      },
+      // //校验规则
+      // editFormRules: {
+      //   roleName: [
+      //     { required: true, message: '请输入角色名字', trigger: 'blur' },
+      //     {
+      //       min: 3,
+      //       max: 10,
+      //       message: '输入的范围是 3 ~ 10 为字符',
+      //       triggetr: 'nlur'
+      //     }
+      //   ],
+      //   roleDesc: [
+      //     { required: true, message: '请输入角色描述', trigger: 'blur' },
+      //     {
+      //       min: 5,
+      //       max: 20,
+      //       message: '输入的范围是 5 ~ 20 为字符',
+      //       triggetr: 'nlur'
+      //     }
+      //   ]
+      // },
       editRolesForm: {},
       // 树形控件的绑定对象
       treeProps: {

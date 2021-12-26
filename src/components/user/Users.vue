@@ -1,11 +1,7 @@
 <template>
   <div>
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-    </el-breadcrumb>
-
+    <!-- 面包屑区域 -->
+    <Breadcrumb name1="用户管理" name2="用户列表" />
     <el-card>
       <el-row :gutter="50">
         <el-col :span="8">
@@ -161,7 +157,14 @@
 </template>
 
 <script>
+import { userAddFormRulesMixin } from '@/common/mixin.js'
+import Breadcrumb from '../breadcrumb/Breadcrumb'
 export default {
+  name: 'Users',
+  components: {
+    Breadcrumb
+  },
+  mixins: [userAddFormRulesMixin],
   data() {
     var checkEmail = (rule, value, cb) => {
       const regEmail = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
@@ -194,45 +197,7 @@ export default {
         email: "",
         mobile: "",
       },
-      addFormRules: {
-        username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-          {
-            min: 3,
-            max: 10,
-            message: "长度在 3 到 10 个字符",
-            trigger: "blur",
-          },
-        ],
-        password: [
-          { required: true, message: "请输入登录密码", trigger: "blur" },
-          {
-            min: 6,
-            max: 15,
-            message: "长度在 6 到 15 个字符",
-            trigger: "blur",
-          },
-        ],
-        email: [
-          { required: true, message: "请输入邮箱", trigger: "blur" },
-          { validator: checkEmail, trigger: "blur" },
-        ],
-        mobile: [
-          { required: true, message: "请输入手机号码", trigger: "blur" },
-          { validator: checkMobile, trigger: "blur" },
-        ],
-      },
       editForm: {},
-      editFormRules: {
-        email: [
-          { required: true, message: "请输入邮箱", trigger: "blur" },
-          { validator: checkEmail, trigger: "blur" },
-        ],
-        mobile: [
-          { required: true, message: "请输入手机号码", trigger: "blur" },
-          { validator: checkMobile, trigger: "blur" },
-        ],
-      },
       setRoleDialogVisible: false,
       //需要被分配角色的用户信息
       userInfo: {},

@@ -1,11 +1,7 @@
 <template>
   <div class="cate">
     <!-- 面包屑导航区域 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-      <el-breadcrumb-item>添加商品</el-breadcrumb-item>
-    </el-breadcrumb>
+    <Breadcrumb name1="商品管理" name2="商品分类" />
     <!-- 卡片视图区域 -->
     <el-card>
       <el-row>
@@ -87,7 +83,12 @@
 </template>
 
 <script>
+import Breadcrumb from '../breadcrumb/Breadcrumb'
 export default {
+  name: 'Cate',
+  components: {
+    Breadcrumb // 面包屑
+  },
   data() {
     return {
       // 商品分类的数据列表,默认为空

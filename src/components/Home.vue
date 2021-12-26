@@ -96,7 +96,7 @@ export default {
 
 <style lang="less" scoped>
 .el-header {
-  background-color: aquamarine;
+  background-color:rgb(127, 204, 255);
   display: flex;
   justify-content: space-between;
   padding-left: 0;
@@ -111,13 +111,13 @@ export default {
   }
 }
 .el-aside {
-  background-color: rgb(127, 255, 191);
+  background-color:#dfe6ee;
   .el-menu {
     border-right: none;
   }
 }
 .el-main {
-  background-color: rgb(127, 255, 165);
+  background-color:#dfe6ee;
 }
 .form-container {
   height: 100%;
@@ -126,11 +126,14 @@ export default {
   margin-right: 10px;
 }
 .toggle-button {
-  background-color: aqua;
+  background-color: #409EFF;
   font-size: 10px;
   line-height: 24px;
   color: azure;
   text-align: center;
   cursor: pointer;
+}
+.el-container{
+  background-color: antiquewhite;
 }
 </style>

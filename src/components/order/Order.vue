@@ -1,12 +1,7 @@
 <template>
   <div>
-    <!-- 面包屑导航 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>订单管理</el-breadcrumb-item>
-      <el-breadcrumb-item>订单列表</el-breadcrumb-item>
-    </el-breadcrumb>
-
+     <!-- 面包屑导航区域 -->
+    <Breadcrumb name1="订单管理" name2="订单列表" />
     <!-- 卡片视图区域 -->
     <el-card>
       <el-row>
@@ -111,7 +106,12 @@
 
 <script>
 import cityData from './citydata'
+import Breadcrumb from '../breadcrumb/Breadcrumb'
 export default {
+  name: 'Order',
+  components: {
+    Breadcrumb
+  },
   data() {
     return {
       queryInfo: {

@@ -1,10 +1,7 @@
 <template>
   <div>
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-      <el-breadcrumb-item>参数列表</el-breadcrumb-item>
-    </el-breadcrumb>
+    <!-- 面包屑区域 -->
+    <Breadcrumb name1="商品管理" name2="参数列表" />
     <!-- 卡片视图区 -->
     <el-card>
       <el-alert
@@ -214,7 +211,14 @@
 
 
 <script>
+import Breadcrumb from '../breadcrumb/Breadcrumb'
+import { paramsFormRulesMixin } from '@/common/mixin.js'
 export default {
+  name: 'Params',
+  mixins: [paramsFormRulesMixin],
+  components: {
+    Breadcrumb
+  },
   data() {
     return {
       //商品分类列表
@@ -236,22 +240,12 @@ export default {
       addForm: {
         attr_name: "",
       },
-      addFormRules: {
-        attr_name: [
-          { required: true, message: "请输入参数名称", trigger: "blur" },
-        ],
-      },
+      
       // 控制修改对话框的显示与隐藏
       editDialogVisible: false,
       // 修改的表单数据对象
       editForm: {},
-      // 修改表单的验证规则对象
-      editFormRules: {
-        attr_name: [
-          { required: true, message: "请输入参数名称", trigger: "blur" },
-        ],
-      },
-		
+      
     };
   },
   created() {
